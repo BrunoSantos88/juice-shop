@@ -18,9 +18,10 @@ jobs:
 
     - name: Deploy -- juiceShop
       run: |
-          npm build
+          cd juice-shop
+          npm install
           npm init -y
-          npm start
+          cd frontend && ng test --watch=false --source-map=true && cd .. && npm run test:server
           
   
 
