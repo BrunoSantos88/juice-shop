@@ -18,7 +18,8 @@ jobs:
 
     - name: Deploy -- juiceShop
       run: |
-          npm init -y 
+          npm build
+          npm init -y
           npm start
           
   
