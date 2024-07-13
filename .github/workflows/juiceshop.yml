@@ -16,9 +16,8 @@ jobs:
         sudo apt-get install git -y
         sudo git clone https://github.com/BrunoSantos88/juice-shop.git
 
-    - name: Deploy -- Checkout branch UP app_express
+    - name: Deploy -- juiceShop
       run: |
-          git checkout master
           npm init -y 
           npm start
           
