@@ -1,4 +1,4 @@
-name: Node.js Juiceshop
+name: juiceshop CI
 
 on:
   push:
@@ -6,14 +6,13 @@ on:
   pull_request:
     branches: [ "master" ]
 
-
 jobs:
-  express_vm:
+  build:
     runs-on: self-hosted
-    
+
     strategy:
       matrix:
-        node-version: [18.x,20.x]
+        node-version: [14.x, 16.x, 18.x,20.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -23,5 +22,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
     - run: npm init -y
     - run: npm start
